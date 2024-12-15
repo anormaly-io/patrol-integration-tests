@@ -33,8 +33,8 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  final TextEditingController nameController = TextEditingController();
-  final TextEditingController nameController2 = TextEditingController();
+  final TextEditingController nameController = TextEditingController(text: 'ouoe');
+  final TextEditingController nameController2 = TextEditingController(text: 'ouoe');
 
   @override
   Widget build(BuildContext context) {
