@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:patrol_integration_tests/custom_widgets/input_form_widget.dart';
-import 'package:patrol_integration_tests/custom_widgets/profile_edit_input_text_widget.dart';
+import 'package:patrol_integration_tests/input_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -18,55 +17,11 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: InputScreen(),
+      routes: {
+        'inputsFocus': (context) => InputScreen()
+      },
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  final TextEditingController nameController = TextEditingController(text: 'ouoe');
-  final TextEditingController nameController2 = TextEditingController(text: 'ouoe');
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-        title: Text(widget.title),
-      ),
-      body: Column(children: [
-        ProfileEditInputTextWidget(
-          label: 'Name',
-          widgetKey: 'name',
-          controller: nameController,
-          icon: Icons.person,
-          validator: (name) => InputFormWidget.validateName(name, context),
-          editAction: _editNameAction,
-        ),
-        InputFormWidget(
-          label: 'Name',
-          widgetKey: 'name2',
-          validator: (name) => InputFormWidget.validateName(name, context),
-          controller: nameController2,
-        ),
-      ],),
-
-    );
-  }
-
-  Future<void> _editNameAction(BuildContext context, bool isValueChanged, String updatedName) async {
-    //when it's not in edit mode we save the updated name
-    if (isValueChanged) {
-      print('name changed');
-    }
-  }
-}
