@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:patrol_integration_tests/input_focus.dart';
 import 'package:patrol_integration_tests/input_screen.dart';
 
 void main() {
@@ -17,10 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: InputScreen(),
-      routes: {
-        'inputsFocus': (context) => InputScreen()
-      },
+      home: const InputFocus(),
     );
   }
 }
