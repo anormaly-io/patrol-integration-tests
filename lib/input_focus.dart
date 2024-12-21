@@ -35,7 +35,9 @@ class _InputFocusState extends State<InputFocus> {
           ElevatedButton(
             key: const Key('button'),
             onPressed: () {
-              readOnly = !readOnly;
+              setState(() {
+                readOnly = !readOnly;
+              });
 
               if (!readOnly) {
                 FocusScope.of(context).requestFocus(_mainFocus);
